@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
         {
             Instantiate(this.gameObject);
             GoBall();
-            n_ball = new_ball;
+            n_ball = new_ball + 1;
         }
         if (force >=3 )
         {
