@@ -8,8 +8,8 @@ public class Ball : MonoBehaviour
     public bool is_Go;
     public float speed_Ball = 7f;
     public int force = 1;
-    public int n_ball = 1;
-    public int new_ball = 1;
+    public int new_ball = 0;
+    public bool newball;
     [SerializeField] Rigidbody2D rigiBall;
 
     private void Awake()
@@ -19,11 +19,22 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (new_ball >= n_ball)
+        if (newball)
         {
-            Instantiate(this.gameObject);
-            GoBall();
-            n_ball = new_ball + 1;
+            new_ball -= 1;
+            newball = false;
+        }
+        
+        if (new_ball >0)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+            {
+                Instantiate(this.gameObject);
+                GoBall();
+                newball=true;
+            }
+            
+           
         }
         if (force >=3 )
         {
